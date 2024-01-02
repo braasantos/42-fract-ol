@@ -2,7 +2,7 @@ NAME = fractol
 SRCS = fract-ol.c
 HEADER = fractol.h
 LIBFTDIR = includes/LIBFT/libft.a
-MINILIBX = minilibx-linux/libmlx_Linux.a
+#MINILIBX = minilibx-linux/libmlx_Linux.a
 MINILIBX_DIR = minilibx-linux/
 MLXFLAGS = -lX11 -lXext
 CC = cc
@@ -25,6 +25,11 @@ $(MINILIBX):
 	$(MAKE) -C $(MINILIBX_DIR)
 
 $(MINILIBX_DIR):
+	wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz -O minilibx
+	tar -xzvf minilibx
+	rm minilibx
+
+$(MINILIBX):
 	wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz -O minilibx
 	tar -xzvf minilibx
 	rm minilibx
