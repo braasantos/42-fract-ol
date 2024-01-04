@@ -12,6 +12,19 @@
 # include "libft.h"
 # include "printf.h"
 
+# define ESC 53
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
+# define R 15
+# define C 8
+# define H 4
+# define J 38
+# define P 35
+# define M 46
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
 
 typedef struct  s_fractal
