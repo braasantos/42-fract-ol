@@ -12,7 +12,7 @@
 # include "libft.h"
 # include "printf.h"
 # include <stdarg.h>
-
+# define SIZE 700
 # define ESC 53
 # define UP 126
 # define DOWN 125
@@ -35,5 +35,6 @@ typedef struct  s_fractal
     void    *image;
     int     x;
     int     y;
+    char    *name;
 }               t_fractal;
 #endif
