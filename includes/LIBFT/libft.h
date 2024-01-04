@@ -17,6 +17,7 @@
 # include <stdio.h> //apagar
 # include <string.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 ///////// --STRUCT-- ////////////
 typedef struct s_list
