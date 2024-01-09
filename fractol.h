@@ -13,10 +13,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define HEIGHT 1000
-# define WIDTH 1000
-#define MAX_ITERATIONS 1000
-# define SIZE 700
+# define SIZE 960
 # define ESC 53
 # define UP 126
 # define DOWN 125
@@ -27,7 +24,8 @@
 # define H 4
 # define J 38
 # define P 35
-# define M 46
+# define ZOOM_IN 61
+# define ZOOM_OUT 45
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 # define KEY_PLUS 69  // Adjust with the actual keycode for '+'
@@ -70,5 +68,5 @@ typedef struct s_fractal
 }			t_fractal;
 
 
-void draw_fractal(t_fractal *fract, char *set);
+int draw_fractal(t_fractal *fract, char *set);
 #endif
