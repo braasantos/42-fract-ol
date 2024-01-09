@@ -85,4 +85,4 @@ bonus: $(OBJS) $(OBJSB)
 	ar rcs $(NAME) $(OBJSB) $(OBJS)
 
 .PHONY: all clean fclean re
-# .SILENT:
+.SILENT:

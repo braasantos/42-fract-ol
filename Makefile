@@ -1,5 +1,5 @@
 NAME = fractol
-SRCS = fract-ol.c
+SRCS = fract-ol.c commands.c fracts.c utils.c
 HEADER = fractol.h
 LIBFTDIR = includes/LIBFT/libft.a
 MINILIBX = minilibx-linux/libmlx_Linux.a
@@ -14,7 +14,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFTDIR) $(MINILIBX_DIR) $(MINILIBX)
-	@echo "Created objs"
+	@echo "Complied chief"
 	$(COMPILER) $(OBJS) $(LIBFTDIR) -I includes/LIBFT $(MLXFLAGS) -o $(NAME) $(MINILIBX) -L/usr/X11R6/lib -lX11 -lXext -lm
 
 $(LIBFTDIR): 
@@ -32,12 +32,13 @@ $(MINILIBX_DIR):
 	$(COMPILER) -I includes/LIBFT -c $< -o $@
 
 clean:
+	@echo "Deleted chief"
 	$(RM) $(OBJS)
 	$(MAKE) -C includes/LIBFT clean
 	$(MAKE) -C $(MINILIBX_DIR) clean
 
 fclean: clean
-	@echo "Deleted objs"
+	@echo "Deleted Everything chief"
 	$(RM) $(NAME)
 	$(MAKE) -C includes/LIBFT fclean
 	$(MAKE) -C $(MINILIBX_DIR) clean
@@ -45,3 +46,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+.SILENT:
