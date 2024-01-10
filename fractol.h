@@ -54,20 +54,23 @@ typedef struct s_fractal
 	double	zoom;
 	char	*name;
 	int		max_iterations;
-}			t_fractal;
+}		t_fractal;
 
-
-void put_pixel(t_fractal *fract, int x, int y, int color);
-void handle_input2(int keysym, t_fractal *fract);
-void get_directions(int n, t_fractal *fract);
-void change_sets(t_fractal *fract, char set);
-void get_zoom(int n, t_fractal *fract);
-void ft_mandelbrot(t_fractal *fract);
-void exit_w_error(t_fractal *fract);
-void init_fract(t_fractal *fract);
-void ft_julia(t_fractal *fract);
-void init_mlx(t_fractal *fract);
-int draw_fractal(t_fractal *fract, char *set);
-int draw_fractal(t_fractal *fract, char *set);
-int handle_input(int keysym, t_fractal *fract);
+void	put_pixel(t_fractal *fract, int x, int y, int color);
+void realinit_fract(t_fractal *fract, int ac, char **av);
+void	handle_input2(int keysym, t_fractal *fract);
+void	get_directions(int n, t_fractal *fract);
+void	change_sets(t_fractal *fract, char set);
+void	get_zoom(int n, t_fractal *fract);
+void	ft_mandelbrot(t_fractal *fract);
+void	exit_w_error(t_fractal *fract);
+void	init_fract(t_fractal *fract);
+// void	get_color(t_fractal *fract);
+void	init_mlx(t_fractal *fract);
+void	ft_julia(t_fractal *fract);
+void	clean_exit(t_fractal *fract);
+void	check_args(char *str, t_fractal *fract);
+int kill_window(t_fractal *fract);
+int		draw_fractal(t_fractal *fract, char *set);
+int		handle_input(int keysym, t_fractal *fract);
 #endif

@@ -21,7 +21,7 @@ void ft_mandelbrot(t_fractal *fract)
 	if (i == fract->max_iterations)
 		put_pixel(fract, fract->x, fract->y, 0x000000);
 	else
-		put_pixel(fract, fract->x, fract->y, (fract->color * i));
+		put_pixel(fract, fract->x, fract->y, (i * 4));
 }
 
 void ft_julia(t_fractal *fract)
@@ -44,8 +44,9 @@ void ft_julia(t_fractal *fract)
 	if (i == fract->max_iterations)
 		put_pixel(fract, fract->x, fract->y, 0x000000);
 	else
-		put_pixel(fract, fract->x, fract->y, (fract->color * (i % 255)));
+			put_pixel(fract, fract->x, fract->y, (i * 4));
 }
+
 int draw_fractal(t_fractal *fract, char *set)
 {
 	fract->x = 0;
@@ -57,7 +58,7 @@ int draw_fractal(t_fractal *fract, char *set)
 			if (ft_strncmp(set, "mandelbrot", 10) == 0)
 				ft_mandelbrot(fract);
 			else if (ft_strncmp(set, "julia", 5) == 0)
-				ft_julia(fract);
+					ft_julia(fract);
 			else
 				exit_w_error(fract);
 			fract->y++;
