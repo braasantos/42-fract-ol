@@ -1,3 +1,8 @@
+![Screenshot from 2024-01-11 19-58-23](https://github.com/braasantos/42-fract-ol/assets/128530040/23d19830-fde0-4b8e-a741-4587e36e455c)
+![Screenshot from 2024-01-11 19-58-33](https://github.com/braasantos/42-fract-ol/assets/128530040/1eee6d59-0d6e-4dba-9c80-caaa82df69f1)
+![image](https://github.com/braasantos/42-fract-ol/assets/128530040/e1049b58-29a3-4f98-8153-aebad8463be2)
+
+
 <h1>Resources</h1>
 <div>
   <h4>Videos</h4>
