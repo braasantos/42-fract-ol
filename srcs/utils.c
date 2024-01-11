@@ -1,18 +1,4 @@
-#include "fractol.h"
-
-// void	get_color(t_fractal *fract)
-// {
-// 	init_fract(fract);
-// 	draw_fractal(fract, fract->name, n);
-// }
-
-void put_pixel(t_fractal *fract, int x, int y, int color)
-{
-	int temp;
-
-	temp = (y * fract->line_length) + (x * (fract->bits_per_pixel / 8));
-	*((unsigned int *)(temp + fract->pointer_to_image)) = color;
-}
+#include "../inc/fractol.h"
 
 void init_mlx(t_fractal *fract)
 {
@@ -27,7 +13,7 @@ void init_mlx(t_fractal *fract)
 	fract->image = mlx_new_image(fract->mlx, SIZE, SIZE);
 	fract->pointer_to_image = mlx_get_data_addr(fract->image, &fract->bits_per_pixel, &fract->line_length, &fract->endian);
 }
-void realinit_fract(t_fractal *fract, int ac, char **av)
+int realinit_fract(t_fractal *fract, int ac, char **av)
 {
 	if (ac == 4 && strncmp(av[1], "julia", 5) == 0)
 	{
@@ -41,17 +27,15 @@ void realinit_fract(t_fractal *fract, int ac, char **av)
 		fract->creal = 0;
 		fract->cimaginary = 0;
 	}
-	ft_printf("im here 1\n");
-	ft_printf("%f\n", fract->cimaginary);
-	ft_printf("%f\n", fract->creal);
+	return (0);
 }
 
-void init_fract(t_fractal *fract)
+void init_fract(t_fractal *fract, int n)
 {
 	fract->x = 0;
 	fract->y = 0;
-	fract->color = 0x87CEEB;
-	fract->zoom = 330;
+	fract->color = 1;
+	fract->zoom = 300;
 	if (ft_strncmp(fract->name, "mandelbrot", 10) == 0)
 	{
 		fract->offset_x = -2.10;
@@ -60,16 +44,17 @@ void init_fract(t_fractal *fract)
 	if (ft_strncmp(fract->name, "julia", 5) == 0)
 	{
 		fract->offset_x = -1.60;
-		fract->zoom = 307;
 		fract->offset_y = -1.50;
-	ft_printf("im here 2\n");
-		ft_printf("%f\n", fract->cimaginary);
-		ft_printf("%f\n", fract->creal);
-		if (!fract->cimaginary || !fract->creal)
+		if (n == 1)
 		{
 			fract->creal = -0.80;
 			fract->cimaginary = 0.156;
 		}
+	}
+	if (ft_strncmp(fract->name, "burning", 6) == 0)
+	{
+		fract->offset_x = -2.10;
+		fract->offset_y = -2.00;
 	}
 	fract->max_iterations = 60;
 }
@@ -116,17 +101,4 @@ double ft_atof(char *str)
 	if (str[i] && !ft_isdigit(str[i]))
 		return (-42);
 	return (nb * is_neg);
-}
-
-void check_args(char *str, t_fractal *fract)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (ft_isalpha(str[i]))
-			clean_exit(fract);
-		i++;
-	}
 }

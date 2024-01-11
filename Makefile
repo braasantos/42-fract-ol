@@ -1,5 +1,11 @@
 NAME = fractol
-SRCS = fract-ol.c commands.c fracts.c utils.c
+SRCS = srcs/commands.c \
+srcs/fractol.c \
+srcs/utils.c \
+srcs/fracts.c \
+srcs/fracts2.c \
+srcs/utils2.c \
+srcs/clean_and_exit.c
 HEADER = fractol.h
 LIBFTDIR = includes/LIBFT/libft.a
 MINILIBX = minilibx-linux/libmlx_Linux.a
@@ -46,4 +52,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-.SILENT:
+# .SILENT:

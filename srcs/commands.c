@@ -1,65 +1,53 @@
-#include "fractol.h"
+#include "../inc/fractol.h"
 
-void	get_zoom(int n, t_fractal *fract)
+int	mouse_hook(int mouse_code, int x, int y, t_fractal *fract)
 {
-	double	zoom_in_factor;
-	double	zoom_out_factor;
-
-	zoom_in_factor = 1.2;
-	zoom_out_factor = 1.2;
-	if (n == 1)
-		fract->zoom *= zoom_in_factor;
-	else
-		fract->zoom /= zoom_out_factor;
-	draw_fractal(fract, fract->name);
+	if (mouse_code == SCROLL_UP)
+		get_zoom_mouse(1, fract, x, y);
+	else if (mouse_code == SCROLL_DOWN)
+		get_zoom_mouse(-1, fract, x, y);
+	check_set(fract, fract->name);
+	return (0);
 }
 
 void	get_directions(int n, t_fractal *fract)
 {
-	double move_factor;
-
-	move_factor = 0.05;
 	if (n == 1) // esquerda
-		fract->offset_x -= move_factor;
+		fract->offset_x -= 42 / fract->zoom;
 	else if (n == 2) // direita
-		fract->offset_x += move_factor;
+		fract->offset_x +=  42 / fract->zoom;
 	else if (n == 3) // cima
-		fract->offset_y -= move_factor;
+		fract->offset_y -=  42 / fract->zoom;
 	else if (n == 4) // baixo
-		fract->offset_y += move_factor;
-	draw_fractal(fract, fract->name);
+		fract->offset_y +=  42 / fract->zoom;
+	check_set(fract, fract->name);
 }
 
 void	change_sets(t_fractal *fract, char set)
 {
 	if (set == 'J')
 		fract->name = "julia";
-	else
+	else if (set == 'M')
 		fract->name = "mandelbrot";
-	init_fract(fract);
-	draw_fractal(fract, fract->name);
+	else
+		fract->name = "burningship";
+	init_fract(fract, 1);
+	check_set(fract, fract->name);
 }
 
-int kill_window(t_fractal *fract)
-{
-	mlx_destroy_image(fract->mlx, fract->image);
-	mlx_destroy_window(fract->mlx, fract->window);
-	mlx_destroy_display(fract->mlx);
-	free(fract->mlx);
-	free(fract);
-	exit(0);
-	return (0);
-}
 int	handle_input(int keysym, t_fractal *fract)
 {
 	if (keysym == ZOOM_IN || keysym == XK_KP_Add)
 		get_zoom(1, fract);
 	else if (keysym == ZOOM_OUT || keysym == XK_KP_Subtract)
 		get_zoom(2, fract);
-	else if (keysym == XK_Escape)
+	if (keysym == XK_Escape)
 		kill_window(fract);
-	// else if (keysym == XK_space)
-	// 	get_color(fract);
+	else if (keysym == XK_space)
+	{
+		fract->color += (255 * 255 * 255) / 100;
+		check_set(fract, fract->name);
+	}
 	else
 		handle_input2(keysym, fract);
 	return (0);
@@ -79,4 +67,12 @@ void	handle_input2(int keysym, t_fractal *fract)
 		change_sets(fract, 'M');
 	else if (keysym == 50)
 		change_sets(fract, 'J');
+	else if (keysym == 51)
+		change_sets(fract, 'X');
+	else if (keysym == 114)
+	{
+		init_fract(fract, 1);
+		check_set(fract, fract->name);
+	}
+	
 }
