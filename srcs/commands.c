@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/12 20:02:43 by bjorge-m          #+#    #+#             */
+/*   Updated: 2024/01/12 20:08:52 by bjorge-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fractol.h"
 
 int	mouse_hook(int mouse_code, int x, int y, t_fractal *fract)
@@ -12,14 +24,14 @@ int	mouse_hook(int mouse_code, int x, int y, t_fractal *fract)
 
 void	get_directions(int n, t_fractal *fract)
 {
-	if (n == 1) // esquerda
+	if (n == 1)
 		fract->offset_x -= 42 / fract->zoom;
-	else if (n == 2) // direita
-		fract->offset_x +=  42 / fract->zoom;
-	else if (n == 3) // cima
-		fract->offset_y -=  42 / fract->zoom;
-	else if (n == 4) // baixo
-		fract->offset_y +=  42 / fract->zoom;
+	else if (n == 2)
+		fract->offset_x += 42 / fract->zoom;
+	else if (n == 3)
+		fract->offset_y -= 42 / fract->zoom;
+	else if (n == 4)
+		fract->offset_y += 42 / fract->zoom;
 	check_set(fract, fract->name);
 }
 
@@ -78,5 +90,5 @@ void	handle_input2(int keysym, t_fractal *fract)
 	{
 		init_fract(fract, 1);
 		check_set(fract, fract->name);
-	}	
+	}
 }

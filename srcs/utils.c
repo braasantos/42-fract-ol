@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjorge-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/12 20:03:24 by bjorge-m          #+#    #+#             */
+/*   Updated: 2024/01/12 20:22:27 by bjorge-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fractol.h"
 
 void	init_mlx(t_fractal *fract)
 {
-	fract->mlx = mlx_init(); // inicia a minilibx library
+	fract->mlx = mlx_init();
 	if (fract->mlx == NULL)
 	{
 		free(fract->mlx);
@@ -19,7 +31,9 @@ void	init_mlx(t_fractal *fract)
 		exit(EXIT_FAILURE);
 	}
 	fract->image = mlx_new_image(fract->mlx, SIZE, SIZE);
-	fract->pointer_to_image = mlx_get_data_addr(fract->image, &fract->bits_per_pixel, &fract->line_length, &fract->endian);
+	fract->pointer_to_image = mlx_get_data_addr
+		(fract->image, &fract->bits_per_pixel, 
+			&fract->line_length, &fract->endian);
 }
 
 int	realinit_fract(t_fractal *fract, int ac, char **av)
@@ -70,7 +84,7 @@ void	init_fract(t_fractal *fract, int n)
 
 int	skip_space_sign(char *str, int *is_neg)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] == ' ')
@@ -86,10 +100,10 @@ int	skip_space_sign(char *str, int *is_neg)
 
 double	ft_atof(char *str)
 {
-	int i;
-	double nb;
-	int is_neg;
-	double div;
+	int		i;
+	double	nb;
+	int		is_neg;
+	double	div;
 
 	nb = 0;
 	div = 0.1;

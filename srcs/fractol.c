@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjorge-m <bjorge-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/12 20:02:50 by bjorge-m          #+#    #+#             */
+/*   Updated: 2024/01/12 20:53:50 by bjorge-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fractol.h"
 
 double	generate_random_c(void)
@@ -23,25 +35,27 @@ void	check_set(t_fractal *fract, char *set)
 		exit_w_error(fract);
 }
 
-void instrutions(void)
+void	instrutions(void)
 {
-	ft_printf("*--------------------INSTRUCTIONS------------------------------------*\n");
+	ft_printf("*-------INSTRUCTIONS----*\n");
 	ft_printf("\n");
-	ft_printf("Move with the arrow keys: Right, Up, Left, and Down\n");
-	ft_printf("Zoom in and out with the + and - keys and the mouse wheel\n");
+	ft_printf("Move with the arrow keys");
+	ft_printf(": Right, Up, Left, and Down\n");
+	ft_printf("Zoom in and out with the +");
+	ft_printf("and - keys and the mouse wheel\n");
 	ft_printf("Change the Julia sets with the J key\n");
 	ft_printf("Change the sets with the 1, 2, 3 keys\n");
 	ft_printf("Change colors with the Space key\n");
 	ft_printf("Return to the default set with the R key\n");
 	ft_printf("Quit the window with the Esc key\n");
 	ft_printf("\n");
-	ft_printf("*-------------------------------------------------------------------*\n");
+	ft_printf("*-----------*\n");
 }
 
 int	main(int ac, char **av)
 {
-	t_fractal *fract;
-	int n;
+	t_fractal	*fract;
+	int			n;
 
 	n = 1;
 	fract = malloc(sizeof(t_fractal));
@@ -55,7 +69,8 @@ int	main(int ac, char **av)
 	check_set(fract, av[1]);
 	instrutions();
 	mlx_mouse_hook(fract->window, mouse_hook, fract);
-	mlx_hook(fract->window, DestroyNotify, StructureNotifyMask, kill_window, fract);
+	mlx_hook(fract->window, DestroyNotify, 
+		StructureNotifyMask, kill_window, fract);
 	mlx_key_hook(fract->window, handle_input, fract);
 	mlx_loop(fract->mlx);
 	free(fract);
