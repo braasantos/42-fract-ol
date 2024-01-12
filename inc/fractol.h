@@ -46,14 +46,14 @@ typedef struct s_fractal
 }		t_fractal;
 
 /* SETS */
-void check_set(t_fractal *fract, char *set);
 void	burning_ship(t_fractal *fract);
 void	mandelbrot(t_fractal *fract);
 void	julia(t_fractal *fract);
-int draw_burningship(t_fractal *fract);
-int draw_mandelbrot(t_fractal *fract);
-int draw_julia(t_fractal *fract);
+int		draw_burningship(t_fractal *fract);
+int		draw_mandelbrot(t_fractal *fract);
+int	draw_julia(t_fractal *fract);
 /* EVENTS */
+void instrutions(void);
 void	handle_input2(int keysym, t_fractal *fract);
 void	put_pixel(t_fractal *fract, int x, int y, int color);
 int		handle_input(int keysym, t_fractal *fract);
@@ -63,14 +63,20 @@ void	change_sets(t_fractal *fract, char set);
 void	get_zoom(int n, t_fractal *fract);
 void	get_directions(int n, t_fractal *fract);
 void	get_zoom_mouse(int n, t_fractal *fract, int x, int y);
+void	set_julia(double *creal, double *cimaginary);
+double	generate_random_c(void);
 /* INIT EVERYTHING */
 void	init_fract(t_fractal *fract, int n);
-int realinit_fract(t_fractal *fract, int ac, char **av);
+int		realinit_fract(t_fractal *fract, int ac, char **av);
 void	init_mlx(t_fractal *fract);
-/* ARGS */
+/* CHECKS */
+void	check_set(t_fractal *fract, char *set);
 void	check_args(char *str, t_fractal *fract);
+int ft_isspecial(char c);
+double	ft_atof(char *str);
+int	skip_space_sign(char *str, int *is_neg);
 /* EXIT */
 void	exit_w_error(t_fractal *fract);
 void	clean_exit(t_fractal *fract);
-int kill_window(t_fractal *fract);
+int		kill_window(t_fractal *fract);
 #endif

@@ -69,10 +69,14 @@ void	handle_input2(int keysym, t_fractal *fract)
 		change_sets(fract, 'J');
 	else if (keysym == 51)
 		change_sets(fract, 'X');
+	else if (keysym == 106 && ft_strncmp(fract->name, "julia", 5) == 0)
+	{
+		set_julia(&fract->creal, &fract->cimaginary);
+		check_set(fract, "julia");
+	}
 	else if (keysym == 114)
 	{
 		init_fract(fract, 1);
 		check_set(fract, fract->name);
-	}
-	
+	}	
 }

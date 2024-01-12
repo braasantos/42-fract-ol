@@ -1,6 +1,6 @@
 #include "../inc/fractol.h"
 
-int draw_mandelbrot(t_fractal *fract)
+int	draw_mandelbrot(t_fractal *fract)
 {
 	fract->x = 0;
 	fract->y = 0;
@@ -17,7 +17,8 @@ int draw_mandelbrot(t_fractal *fract)
 	mlx_put_image_to_window(fract->mlx, fract->window, fract->image, 0, 0);
 	return (0);
 }
-int draw_julia(t_fractal *fract)
+
+int	draw_julia(t_fractal *fract)
 {
 	fract->x = 0;
 	fract->y = 0;
@@ -34,7 +35,8 @@ int draw_julia(t_fractal *fract)
 	mlx_put_image_to_window(fract->mlx, fract->window, fract->image, 0, 0);
 	return (0);
 }
-int draw_burningship(t_fractal *fract)
+
+int	draw_burningship(t_fractal *fract)
 {
 	fract->x = 0;
 	fract->y = 0;

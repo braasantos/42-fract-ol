@@ -1,6 +1,33 @@
 #include "../inc/fractol.h"
 
-void check_args(char *str, t_fractal *fract)
+int ft_isspecial(char c)
+{
+	if (c == '!' || c == '~')
+		return (1);
+	if (c == '@' || c == '#')
+		return (1);
+	if (c == '^' || c == '$')
+		return (1);
+	if (c == '&' || c == '*')
+		return (1);
+	if (c == '(' || c == ')')
+		return (1);
+	if (c == '_' || c == '~')
+		return (1);
+	if (c == '=' || c == '\\')
+		return (1);
+	if (c == '[' || c == ']')
+		return (1);
+	if (c == '|' || c == '"')
+		return (1);
+	if (c == '{' || c == '{')
+		return (1);
+	if (c == '\'')
+		return (1);
+	return (0);
+}
+
+void	check_args(char *str, t_fractal *fract)
 {
 	int i;
 
@@ -9,11 +36,13 @@ void check_args(char *str, t_fractal *fract)
 	{
 		if (ft_isalpha(str[i]))
 			clean_exit(fract);
+		if (ft_isspecial(str[i]) == 1)
+			clean_exit(fract);
 		i++;
 	}
 }
 
-void put_pixel(t_fractal *fract, int x, int y, int color)
+void	put_pixel(t_fractal *fract, int x, int y, int color)
 {
 	int temp;
 

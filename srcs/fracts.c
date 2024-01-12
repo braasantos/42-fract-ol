@@ -24,7 +24,7 @@ void	burning_ship(t_fractal *fract)
 		put_pixel(fract, fract->x, fract->y, (fract->color * i * 4));
 }
 
-void mandelbrot(t_fractal *fract)
+void	mandelbrot(t_fractal *fract)
 {
 	int i;
 	double x_temp;
@@ -48,7 +48,7 @@ void mandelbrot(t_fractal *fract)
 		put_pixel(fract, fract->x, fract->y, (fract->color * i * 4));
 }
 
-void julia(t_fractal *fract)
+void	julia(t_fractal *fract)
 {
 	int i;
 	double tmp;
@@ -69,4 +69,3 @@ void julia(t_fractal *fract)
 	else
 		put_pixel(fract, fract->x, fract->y, (fract->color * i * 4));
 }
-

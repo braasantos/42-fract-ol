@@ -1,19 +1,28 @@
 #include "../inc/fractol.h"
 
-void init_mlx(t_fractal *fract)
+void	init_mlx(t_fractal *fract)
 {
 	fract->mlx = mlx_init(); // inicia a minilibx library
+	if (fract->mlx == NULL)
+	{
+		free(fract->mlx);
+		free(fract);
+		ft_printf("There was a problem\n");
+		exit(EXIT_FAILURE);
+	}
 	fract->window = mlx_new_window(fract->mlx, SIZE, SIZE, fract->name);
 	if (fract->window == NULL)
 	{
 		free(fract->window);
 		free(fract->mlx);
+		ft_printf("There was a problem creating the window\n");
 		exit(EXIT_FAILURE);
 	}
 	fract->image = mlx_new_image(fract->mlx, SIZE, SIZE);
 	fract->pointer_to_image = mlx_get_data_addr(fract->image, &fract->bits_per_pixel, &fract->line_length, &fract->endian);
 }
-int realinit_fract(t_fractal *fract, int ac, char **av)
+
+int	realinit_fract(t_fractal *fract, int ac, char **av)
 {
 	if (ac == 4 && strncmp(av[1], "julia", 5) == 0)
 	{
@@ -30,7 +39,7 @@ int realinit_fract(t_fractal *fract, int ac, char **av)
 	return (0);
 }
 
-void init_fract(t_fractal *fract, int n)
+void	init_fract(t_fractal *fract, int n)
 {
 	fract->x = 0;
 	fract->y = 0;
@@ -48,7 +57,7 @@ void init_fract(t_fractal *fract, int n)
 		if (n == 1)
 		{
 			fract->creal = -0.80;
-			fract->cimaginary = 0.156;
+			fract->cimaginary = 0.176;
 		}
 	}
 	if (ft_strncmp(fract->name, "burning", 6) == 0)
@@ -56,10 +65,10 @@ void init_fract(t_fractal *fract, int n)
 		fract->offset_x = -2.10;
 		fract->offset_y = -2.00;
 	}
-	fract->max_iterations = 60;
+	fract->max_iterations = 42;
 }
 
-static int skip_space_sign(char *str, int *is_neg)
+int	skip_space_sign(char *str, int *is_neg)
 {
 	int i;
 
@@ -74,7 +83,8 @@ static int skip_space_sign(char *str, int *is_neg)
 	}
 	return (i);
 }
-double ft_atof(char *str)
+
+double	ft_atof(char *str)
 {
 	int i;
 	double nb;
