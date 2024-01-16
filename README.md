@@ -5,6 +5,9 @@
 
 <h1>Resources</h1>
 <div>
+  <h4>My article</h4>
+  <a href="[https://alonso-delarte.medium.com/a-quick-explanation-of-the-mandelbrot-set-41102d7182b](https://medium.com/@by1jorgesantos/fract-ol-render-beautiful-sets-0699a378b953)"> fract-ol — render beautiful sets.</a>
+  <h1></h1>
   <h4>Videos</h4>
   <a href="https://www.youtube.com/watch?v=NGMRB4O922I&ab_channel=Numberphile"> The Mandelbrot Set - Numberphile </a>
   <p></p>
